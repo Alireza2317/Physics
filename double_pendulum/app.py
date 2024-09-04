@@ -89,14 +89,14 @@ class DoublePendulum:
 		theta2 = theta2 / 180 * 3.1415
 
 		ball1_pos = piv_pos[0] -  length1 * sin(theta1), piv_pos[1] -  length1 * cos(theta1)
-		ball2_pos = piv_pos[0] -  length2 * sin(theta2), piv_pos[1] -  length2 * cos(theta2)
+		ball2_pos = ball1_pos[0] -  length2 * sin(theta2), ball1_pos[1] -  length2 * cos(theta2)
 
 
 		self.ball1 = Ball(space, pos=ball1_pos, color=ball_color)
 		self.ball2 = Ball(space, pos=ball2_pos, color=ball_color)
 
 		self.rod1 = Rod(space, body1=self.ball1.body, body2=piv_pos)
-		self.rod2 = Rod(space, body1=self.ball2.body, body2=self.ball1.body)
+		self.rod2 = Rod(space, body1=self.ball1.body, body2=self.ball2.body)
 
 
 class Simulation:
@@ -137,7 +137,7 @@ class Simulation:
 
 if __name__ == '__main__':
 	sim = Simulation()
-	DoublePendulum(sim.space, piv_pos=(1*WIDTH//2, 50), length1=300, theta1=30, length2=150, theta2=70, ball_color=BALL_COLOR)
+	DoublePendulum(sim.space, piv_pos=(1*WIDTH//2, 50), length1=300, theta1=0, length2=150, theta2=15, ball_color=BALL_COLOR)
 
 	while True:
 		sim.step()

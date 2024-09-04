@@ -41,7 +41,6 @@ class Ball:
 		space.add(self.body, self.shape)
 
 
-
 class Rod:
 	"""
 	Creates a rod, connecting two given bodies(or a given body and a coordinate in space)
@@ -69,7 +68,6 @@ class Rod:
 
 	
 
-
 class Pendulum:
 	def __init__(
 			self, 
@@ -84,8 +82,11 @@ class Pendulum:
 		"""
 		Creates pendulum, based on length and angle theta(degrees), ball color and pivot point coordinate
 		"""
+		piv_pos
 		theta = theta / 180 * 3.1415
 		ball_pos = length * sin(theta), length * cos(theta)
+
+
 		self.ball = Ball(space, pos=ball_pos, color=ball_color, mass=ball_mass)
 		self.rod = Rod(space, body1=self.ball.body, body2=piv_pos)
 
@@ -97,29 +98,28 @@ class PendulumSimulation:
 		self.space = pm.Space()
 		self.screen = pg.display.set_mode((WIDTH, HEIGHT))
 		self.options = pgutil.DrawOptions(self.screen)
+		pgutil.positive_y_is_up = True
 		rod_color = (255,255,255, 255)
-		self.options._use_chipmunk_debug_draw = 1
 		self.options.constraint_color = rod_color
 		self.clock = pg.time.Clock()
 		self.config()
 
-		#self.pendulum = Pendulum(
-		#	self.space,
-		#	ball_pos=(WIDTH//15, HEIGHT//6),
-		#	piv_pos=(WIDTH//2, 50),
-		#	ball_mass=200,
-		#	ball_color=(255,255,0,255),
-		#	rod_color=rod_color,
-		#	ball_radius=60
-		#)
+		self.pendulum = Pendulum(
+			self.space,
+			piv_pos=(WIDTH//2, HEIGHT-50),
+			ball_mass=40,
+			ball_color=(255,255,0,255),
+			length=800,
+			theta=30
+		)
 		
+
 	def config(self):
 		pg.display.set_caption('Pendulum Simulation')
 		self.fps = FPS
-		self.space.gravity = (0, 1300)
-		self.space.damping = 1
-
-
+		self.space.gravity = (0, -1300)
+		self.space.damping = 0.9
+		
 
 	def step(self):
 		for event in pg.event.get():

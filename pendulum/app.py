@@ -5,12 +5,13 @@ import pymunk.pygame_util as pgutil
 from math import sin, cos
 
 
-WIDTH = 1500
-HEIGHT = 900
+WIDTH = 800
+HEIGHT = 600
 FPS = 120
 
-MASS = 20
+MASS = 60
 BG_COLOR = '#212121'
+BALL_COLOR = (220, 180, 0, 255)
 
 
 class Ball:
@@ -30,7 +31,7 @@ class Ball:
 		self.body = pm.Body(mass=mass, body_type=body_type)
 		self.body.position = pos
 		
-		radius = mass
+		radius = mass / 2
 		self.body.moment = pm.moment_for_circle(mass, inner_radius=0, outer_radius=radius)
 		self.shape = pm.Circle(self.body, radius=radius)
 		self.shape.color = color
@@ -67,58 +68,48 @@ class Rod:
 		space.add(self.joint)
 
 	
-
 class Pendulum:
 	def __init__(
 			self, 
 			space: pm.Space, 
 			*, 
+			piv_pos: tuple,
 			length: int,
 			theta: float,
-			ball_color: tuple[int, int, int, int], 
-			ball_mass: int,
-			piv_pos: tuple
+			ball_color: tuple[int, int, int, int] 
 	) -> None:
 		"""
 		Creates pendulum, based on length and angle theta(degrees), ball color and pivot point coordinate
+		piv_pos, is based on positive y-axis going down
 		"""
-		piv_pos
+		piv_pos = piv_pos[0], HEIGHT - piv_pos[1]
 		theta = theta / 180 * 3.1415
-		ball_pos = length * sin(theta), length * cos(theta)
+		ball_pos = piv_pos[0] -  length * sin(theta), piv_pos[1] -  length * cos(theta)
 
 
-		self.ball = Ball(space, pos=ball_pos, color=ball_color, mass=ball_mass)
+		self.ball = Ball(space, pos=ball_pos, color=ball_color)
 		self.rod = Rod(space, body1=self.ball.body, body2=piv_pos)
 
 
-
-
-class PendulumSimulation:
+class Simulation:
 	def __init__(self) -> None:
+		# pymunk settings
 		self.space = pm.Space()
+		self.space.gravity = (0, -1500)
+		self.space.damping = 0.93
+		
+		# pygame settings
 		self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+		pg.display.set_caption('Pendulum Simulation')
+		self.clock = pg.time.Clock()
+		self.fps = FPS
+
+		# pymunk and pygame integration
 		self.options = pgutil.DrawOptions(self.screen)
 		pgutil.positive_y_is_up = True
-		rod_color = (255,255,255, 255)
+
+		rod_color = (255, 255, 255, 255)
 		self.options.constraint_color = rod_color
-		self.clock = pg.time.Clock()
-		self.config()
-
-		self.pendulum = Pendulum(
-			self.space,
-			piv_pos=(WIDTH//2, HEIGHT-50),
-			ball_mass=40,
-			ball_color=(255,255,0,255),
-			length=800,
-			theta=30
-		)
-		
-
-	def config(self):
-		pg.display.set_caption('Pendulum Simulation')
-		self.fps = FPS
-		self.space.gravity = (0, -1300)
-		self.space.damping = 0.9
 		
 
 	def step(self):
@@ -134,14 +125,12 @@ class PendulumSimulation:
 		self.clock.tick(self.fps)
 		self.space.step(1/self.fps)
 
-		return False
-
 
 
 if __name__ == '__main__':
-	simulation = PendulumSimulation()
+	sim = Simulation()
+	Pendulum(sim.space, piv_pos=(1*WIDTH//2, 50), length=300, theta=30, ball_color=BALL_COLOR)
+
 	while True:
-		done = simulation.step()
+		sim.step()
 		
-		if done:
-			break

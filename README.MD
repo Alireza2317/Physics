@@ -14,13 +14,13 @@ This repository contains a collection of physics simulations built using **PyMun
 
 ## Installation
 1. Clone the repository:
-   ```bash
+```bash
    git clone https://github.com/Alireza2317/Physics
    cd Physics
 ```
 2. Install the dependencies:
-    ```bash
-    pip install pymunk pygame    
+```bash
+    pip install pymunk pygame
 ```
 
 Then you can run any of the scripts inside the sub-directories. Enjoy :)

@@ -1,4 +1,4 @@
-# Physics Simulations with Python ⚛️
+# Physics Simulations with Python
 
 ![Python](https://img.shields.io/badge/python-gray?logo=python)
 ![Pymunk](https://img.shields.io/badge/Physics-Pymunk-green)
@@ -18,7 +18,7 @@ A simulation of a pendulum with another pendulum attached to its end. It demonst
 ### 2. Galton Board (Probability)
 A vertical board with interleaved rows of pegs. Balls drop from the top, bouncing randomly left or right. It demonstrates how the **Binomial Distribution** approximates the **Normal Distribution** (Bell Curve) as the number of balls increases.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8385d67a-ce3e-432c-985a-23c862720476" alt="Galton Board Demo" width="600">
+  <img src="https://github.com/user-attachments/assets/ba3bd69b-ce95-4c9c-9a17-b47ec66db8d5" alt="Galton Board Demo" width="600">
 </p>
 
 ### 3. Simple Pendulum (Harmonic Motion)
@@ -63,4 +63,5 @@ python app.py
 ├── pendulum/            # Simple harmonic motion
 └── requirements.txt
 ```
+
 

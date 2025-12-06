@@ -1,4 +1,4 @@
-# Physics Simulations with Python ⚛️
+# Physics Simulations with Python
 
 ![Python](https://img.shields.io/badge/python-gray?logo=python)
 ![Pymunk](https://img.shields.io/badge/Physics-Pymunk-green)
@@ -12,19 +12,19 @@ A collection of interactive 2D physics simulations built using **Pymunk** (physi
 ### 1. Double Pendulum (Chaos Theory)
 A simulation of a pendulum with another pendulum attached to its end. It demonstrates **chaotic motion**, where the system is highly sensitive to initial conditions.
 <p align="center">
-  <img src="https://via.placeholder.com/600x300?text=Upload+Double+Pendulum+GIF" alt="Double Pendulum Demo" width="600">
+  <img src="https://github.com/user-attachments/assets/c30f1915-650a-4be5-8f5a-7f339e3f2bee" alt="Double Pendulum Demo" width="600">
 </p>
 
 ### 2. Galton Board (Probability)
 A vertical board with interleaved rows of pegs. Balls drop from the top, bouncing randomly left or right. It demonstrates how the **Binomial Distribution** approximates the **Normal Distribution** (Bell Curve) as the number of balls increases.
 <p align="center">
-  <img src="https://via.placeholder.com/600x300?text=Upload+Galton+Board+GIF" alt="Galton Board Demo" width="600">
+  <img src="https://github.com/user-attachments/assets/fe1ec3ce-af83-4340-9da8-17811ff09117" alt="Double Pendulum Demo" width="600">
 </p>
 
 ### 3. Simple Pendulum (Harmonic Motion)
 A classic simulation of a simple pendulum subject to gravity and damping, visualizing the conversion between potential and kinetic energy.
 <p align="center">
-  <img src="https://via.placeholder.com/600x300?text=Upload+Simple+Pendulum+GIF" alt="Simple Pendulum Demo" width="600">
+  <img src="https://github.com/user-attachments/assets/42ae076b-fcc8-4281-8275-1d35860176ba" alt="Simple Pendulum Demo" width="600">
 </p>
 
 ## 🛠️ Requirements
@@ -63,3 +63,8 @@ python app.py
 ├── pendulum/            # Simple harmonic motion
 └── requirements.txt
 ```
+
+
+
+
+

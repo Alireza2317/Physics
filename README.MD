@@ -18,7 +18,7 @@ A simulation of a pendulum with another pendulum attached to its end. It demonst
 ### 2. Galton Board (Probability)
 A vertical board with interleaved rows of pegs. Balls drop from the top, bouncing randomly left or right. It demonstrates how the **Binomial Distribution** approximates the **Normal Distribution** (Bell Curve) as the number of balls increases.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ba3bd69b-ce95-4c9c-9a17-b47ec66db8d5" alt="Double Pendulum Demo" width="600">
+  <img src="https://github.com/user-attachments/assets/fe1ec3ce-af83-4340-9da8-17811ff09117" alt="Double Pendulum Demo" width="600">
 </p>
 
 ### 3. Simple Pendulum (Harmonic Motion)
@@ -63,6 +63,7 @@ python app.py
 ├── pendulum/            # Simple harmonic motion
 └── requirements.txt
 ```
+
 
 
 
